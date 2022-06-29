@@ -66,7 +66,7 @@ Adding "> 6-6-22-running-config.xml" to the end of the curl request redirects st
 ## EXAMPLE 3: INVESTIGATE AN ASSET (unknown device)
 
 
-![2254eced8cc7ad60d47d6260c8573420.png](../_resources/2254eced8cc7ad60d47d6260c8573420.png)
+![](images/workflow.png)
 
 ### Review Workflow
 
