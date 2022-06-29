@@ -52,7 +52,10 @@ curl -kG "https://10.10.10.10/api/?type=export&category=configuration&key=137782
 This will return the running-config directly to the terminal:
 
 ```
-<config version="10.1.0" urldb="paloaltonetworks" detail-version="10.1.0"><mgt-config><users>...<truncated> 
+<config version="10.1.0" urldb="paloaltonetworks" detail-version="10.1.0">
+    <mgt-config>
+       <users>
+          ...<truncated> 
 ```
 
 Let's run the same command and route the output to a file. It's recommended to include the date the backup was pulled in the filename.
@@ -62,6 +65,8 @@ curl -kG "https://10.10.10.10/api/?type=export&category=configuration&key=137782
 ```
 
 Adding "> 6-6-22-running-config.xml" to the end of the curl request redirects standard output to the file 6-6-22-running-config.xml. If all went smoothly, this file is a working running-config backup. It should be treated with care, as it can contain certificates, keys, usernames, password hashes and other configuration details.
+
+This Github repo has a sample Python script that will create a backup and store it using the date in the filename. This script can be run with a CRON job (or scheduled task) for recurring backups. [panback.py](https://github.com/nopnoplabs/cr-netbackup/blob/main/panback.py)
 
 ## EXAMPLE 3: INVESTIGATE AN ASSET (unknown device)
 
@@ -82,32 +87,54 @@ Reviewing logs and alerts, you may encounter a device that you do not recognize.
 
 4. We can look at traffic logs  and threat logs and examine host behaviors
 
+### Important Notes
+
+Some API queries will provide immediate results (looking at the ARP table). More complex queries will return a job ID, and the results will be retrieved with a second query referencing that job ID.
+
+Traffic and threat queries will return a maximum 20 results by default.ß
+
 ### TRAFFIC LOGS
 
 **Where is traffic going?**
+
+When was the device first seen?
+
+When was the device last seen?
+
 Destination address?
+
 Destination region?
+
 Application (or ports/protocol)?
+
+You can learn about available parameters to send the XML API on your firewall at:
+
+`https://<firewallip>/php/rest/browse.php/log::traffic`
+
 
 ### THREAT LOGS
 
-Any threat events triggered?
+**Any threat events triggered?**
 
 Timeline - (what is it and how long has it been there)
+
 MAC vendor lookup
+
 curl https://api.macvendors.com/FC-A1-3E-2A-1C-33
+
 Poll DHCP log via API (retrieve logs)
+
 https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-panorama-api/pan-os-xml-api-request-types/retrieve-logs-api
 
 DHCP Query:
 
-`https://$HOSTIP/api/?type=log&log-type=system&query=(%20subtype%20eq%20dhcp%20)`
+`https://<firewallip>/api/?type=log&log-type=system&query=(%20subtype%20eq%20dhcp%20)`
 
 Grab Job ID:
 
-`https://<hostname>/api/?type=log&action=get&job-id=185`
+`https://<firewallip>/api/?type=log&action=get&job-id=185`
 
-TRAFFIC LOGS
+
 
 
 
