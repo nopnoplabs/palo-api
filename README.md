@@ -5,7 +5,7 @@
 To Start working with the Palo Alto API, we'll need to create an API key from an existing username and password. This action is only performed once and will only return the key once so make sure to capture the response. Treat your API key like a password.
 
 ```
-curl -k -X GET 'https://10.222.2.1/api/?type=keygen&user=apiguy&password=apiguypassword' 
+curl -k -X GET 'https://10.10.10.10/api/?type=keygen&user=apiguy&password=apiguypassword' 
 ```
 
 This get requests sends a username and password and returns with a an API key that we'll use for remaining requests.
@@ -13,7 +13,7 @@ This get requests sends a username and password and returns with a an API key th
 ```
 <response status = 'success'>
     <result>
-         <key>LUFRPT00aG1Lc0R2cEdpNWlPVi94WlhSckFqTUJVck09TU5JdDBFcVlsWjdSODVXZGhkc2RXT0YvclN4VlNzdTJnVG9nYWdNUUhJSDFLMzhoWjRzYjVXOEIrU1IzUXBISg==</key>
+         <key>137782add6d930790707216ab8203b79d9394f05TU5JdDBFcVlsWjdSODVXZGh137782add6d930790707216ab8203b79d9394f05zYjV137782add6d930790707216ab8203b79d9394f05</key>
     </result>
 </response> 
 ```
@@ -23,7 +23,7 @@ This get requests sends a username and password and returns with a an API key th
 Grab system info from Palo using header auth
 
 ```
-curl -H "X-PAN-KEY: LUFRPT00aG1Lc0R2cEdpNWlPVi94WlhSckFqTUJVck09TU5JdDBFcVlsWjdSODVXZGhkc2RXT0YvclN4VlNzdTJnVG9nYWdNUUhJSDFLMzhoWjRzYjVXOEIrU1IzUXBISg==" -k 'https://10.222.2.1/api/?type=op&cmd=<show><system><info></info></system></show>' 
+curl -H "X-PAN-KEY: 137782add6d930790707216ab8203b79d9394f05TU5JdDBFcVlsWjdSODVXZGh137782add6d930790707216ab8203b79d9394f05zYjV137782add6d930790707216ab8203b79d9394f05" -k 'https://10.10.10.10/api/?type=op&cmd=<show><system><info></info></system></show>' 
 ```
 
 If everything is working correctly, we'll get infomation similar to the following:
@@ -46,7 +46,7 @@ If everything is working correctly, we'll get infomation similar to the followin
 Pull the config using the API
 
 ```
-curl -kG "https://10.222.2.1/api/?type=export&category=configuration&key=LUFRPT00aG1Lc0R2cEdpNWlPVi94WlhSckFqTUJVck09TU5JdDBFcVlsWjdSODVXZGhkc2RXT0YvclN4VlNzdTJnVG9nYWdNUUhJSDFLMzhoWjRzYjVXOEIrU1IzUXBISg==" 
+curl -kG "https://10.10.10.10/api/?type=export&category=configuration&key=137782add6d930790707216ab8203b79d9394f05TU5JdDBFcVlsWjdSODVXZGh137782add6d930790707216ab8203b79d9394f05zYjV137782add6d930790707216ab8203b79d9394f05" 
 ```
 
 This will return the running-config directly to the terminal:
@@ -58,7 +58,7 @@ This will return the running-config directly to the terminal:
 Let's run the same command and route the output to a file. It's recommended to include the date the backup was pulled in the filename.
 
 ```
-curl -kG "https://10.222.2.1/api/?type=export&category=configuration&key=LUFRPT00aG1Lc0R2cEdpNWlPVi94WlhSckFqTUJVck09TU5JdDBFcVlsWjdSODVXZGhkc2RXT0YvclN4VlNzdTJnVG9nYWdNUUhJSDFLMzhoWjRzYjVXOEIrU1IzUXBISg==" > 6-6-22-running-config.xml 
+curl -kG "https://10.10.10.10/api/?type=export&category=configuration&key=137782add6d930790707216ab8203b79d9394f05TU5JdDBFcVlsWjdSODVXZGh137782add6d930790707216ab8203b79d9394f05zYjV137782add6d930790707216ab8203b79d9394f05" > 6-6-22-running-config.xml 
 ```
 
 Adding "> 6-6-22-running-config.xml" to the end of the curl request redirects standard output to the file 6-6-22-running-config.xml. If all went smoothly, this file is a working running-config backup. It should be treated with care, as it can contain certificates, keys, usernames, password hashes and other configuration details.
@@ -112,7 +112,4 @@ TRAFFIC LOGS
 
 
 
-Retreive a PCAP from the Firewall
-
-https://docs.paloaltonetworks.com/pan-os/9-1/pan-os-panorama-api/pan-os-xml-api-request-types/export-files-api/export-packet-captures/export-threat-filter-and-data-filtering-pcaps#id132daa4d-1a0d-4603-829d-aca09850dc78
 
