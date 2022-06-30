@@ -89,11 +89,35 @@ Reviewing logs and alerts, you may encounter a device that you do not recognize.
 
 ### Important Notes
 
-Some API queries will provide immediate results (looking at the ARP table). More complex queries will return a job ID, and the results will be retrieved with a second query referencing that job ID.
+* Some API queries will provide immediate results (looking at the ARP table). More complex queries will return a job ID, and the results will be retrieved with a second query referencing that job ID.
 
-Traffic and threat queries will return a maximum 20 results by default.ß
+* Traffic and threat queries will return a maximum 20 results by default.
 
-### TRAFFIC LOGS
+### Step 2: Check ARP Entries and DHCP Logs
+
+This command will return with the ARP table in XML format:
+
+`https://<firewallip>/api/?type=op&cmd=%3Cshow%3E%3Carp%3E%3Centry+name+%3D+%27all%27%2F%3E%3C%2Farp%3E%3C%2Fshow>`
+
+This query will search the system logs for (subtype eq DHCP). This query will return a Job ID - we can view the results by retrieving the Job ID.
+
+`https://<firewallip>/api/?type=log&log-type=system&query=(%20subtype%20eq%20dhcp%20)`
+
+To view the Job ID:
+
+`https://<firewallip>//api/?type=log&action=get&job-id=82`
+
+### Step 3: Check ARP Entries and DHCP Logs
+
+MAC vendor lookup
+
+`curl https://api.macvendors.com/FC-A1-3E-2A-1C-33`
+
+### Step 4: Search Traffic Logs and Threat Logs
+
+[https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-panorama-api/pan-os-xml-api-request-types/retrieve-logs-api](https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-panorama-api/pan-os-xml-api-request-types/retrieve-logs-api)
+
+#### TRAFFIC LOGS
 
 **Where is traffic going?**
 
@@ -112,19 +136,10 @@ You can learn about available parameters to send the XML API on your firewall at
 `https://<firewallip>/php/rest/browse.php/log::traffic`
 
 
-### THREAT LOGS
+#### THREAT LOGS
 
 **Any threat events triggered?**
 
-Timeline - (what is it and how long has it been there)
-
-MAC vendor lookup
-
-curl https://api.macvendors.com/FC-A1-3E-2A-1C-33
-
-Poll DHCP log via API (retrieve logs)
-
-https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-panorama-api/pan-os-xml-api-request-types/retrieve-logs-api
 
 DHCP Query:
 
@@ -135,8 +150,8 @@ Grab Job ID:
 `https://<firewallip>/api/?type=log&action=get&job-id=185`
 
 
+##Bonus
 
+Search XML logs with Xpath queries.
 
-
-
-
+Review xml.py
