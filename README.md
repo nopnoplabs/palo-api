@@ -83,8 +83,6 @@ Reviewing logs and alerts, you may encounter a device that you do not recognize.
 
 3.  Who makes this device? We can use an API to query a public directory of MAC addresses and with the MAC address and see what type of device it's registered as.
 
-3.  DHCP logs
-
 4. We can look at traffic logs  and threat logs and examine host behaviors
 
 ### Important Notes
@@ -121,6 +119,22 @@ MAC vendor lookup
 
 **Where is traffic going?**
 
+A default query will respond with a maximum of 20 entries. Unless a date range is specified, it will respond with the latest results. These behaviors can be changed with parameters like nlog and dir. You can learn about available parameters to send the XML API on your firewall at:
+
+`https://<firewallip>/php/rest/browse.php/log::traffic`
+
+A basic traffic query would look like this:
+
+`https://10.10.10.10/api/?type=log&log-type=traffic&query=(%20addr.src%20in%2010.222.2.103%20)`
+
+This will execute a search on the firewall and return a job number. A second query requeseting that job number will return the results in XML (replace 158 with the appropriate job number).
+
+**Search Results**
+
+`https://10.10.10.10//api/?type=log&action=get&job-id=158`
+
+**How would you search the logs and learn the following?**
+
 When was the device first seen?
 
 When was the device last seen?
@@ -131,27 +145,25 @@ Destination region?
 
 Application (or ports/protocol)?
 
-You can learn about available parameters to send the XML API on your firewall at:
-
-`https://<firewallip>/php/rest/browse.php/log::traffic`
-
 
 #### THREAT LOGS
 
 **Any threat events triggered?**
 
+This will execute a search in the threat logs for the same IP address as our traffic log search. Just like the traffic log search, the firewall will return a job ID. A second query with that job ID will return XML search results.
 
-DHCP Query:
+`https://10.10.10.10/api/?type=log&log-type=threat&query=(%20addr.src%20in%2010.222.2.103%20)`
 
-`https://<firewallip>/api/?type=log&log-type=system&query=(%20subtype%20eq%20dhcp%20)`
+**Search Results**
 
-Grab Job ID:
-
-`https://<firewallip>/api/?type=log&action=get&job-id=185`
-
+`https://10.10.10.10//api/?type=log&action=get&job-id=158`
 
 ## Bonus
 
 Search XML logs with Xpath queries.
+
+Log search results can be downloaded and saved as local XML files. You can open them with any text editor, or search them using XPath:
+
+[https://www.w3schools.com/xml/xml_xpath.asp](https://www.w3schools.com/xml/xml_xpath.asp)
 
 Review [xml.py](XML/xml.py)

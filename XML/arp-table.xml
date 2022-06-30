@@ -1,0 +1,104 @@
+<response status="success"><result>
+  <max>1500</max>
+  <total>12</total>
+  <timeout>1800</timeout>
+  <dp>dp0</dp>
+  <entries>
+    <entry>
+      <status>  c  </status>
+      <ip>148.51.234.25</ip>
+      <mac>00:00:5e:00:01:07</mac>
+      <ttl>1771</ttl>
+      <interface>ethernet1/1</interface>
+      <port>ethernet1/1</port>
+    </entry>
+    <entry>
+      <status>  c  </status>
+      <ip>148.51.234.26</ip>
+      <mac>fc:bd:67:c2:a8:6d</mac>
+      <ttl>909</ttl>
+      <interface>ethernet1/1</interface>
+      <port>ethernet1/1</port>
+    </entry>
+    <entry>
+      <status>  c  </status>
+      <ip>10.222.2.51</ip>
+      <mac>d4:c9:3c:51:58:32</mac>
+      <ttl>1068</ttl>
+      <interface>vlan.2222</interface>
+      <port>ethernet1/2</port>
+    </entry>
+    <entry>
+      <status>  c  </status>
+      <ip>10.222.2.53</ip>
+      <mac>a8:b4:56:ec:86:26</mac>
+      <ttl>1606</ttl>
+      <interface>vlan.2222</interface>
+      <port>ethernet1/2</port>
+    </entry>
+    <entry>
+      <status>  c  </status>
+      <ip>10.222.2.98</ip>
+      <mac>d4:1d:71:94:73:00</mac>
+      <ttl>1621</ttl>
+      <interface>vlan.2222</interface>
+      <port>ethernet1/2</port>
+    </entry>
+    <entry>
+      <status>  c  </status>
+      <ip>10.222.2.102</ip>
+      <mac>00:0c:29:39:e9:21</mac>
+      <ttl>1727</ttl>
+      <interface>vlan.2222</interface>
+      <port>ethernet1/2</port>
+    </entry>
+    <entry>
+      <status>  c  </status>
+      <ip>10.222.2.103</ip>
+      <mac>64:16:66:ee:7f:5f</mac>
+      <ttl>1734</ttl>
+      <interface>vlan.2222</interface>
+      <port>ethernet1/2</port>
+    </entry>
+    <entry>
+      <status>  c  </status>
+      <ip>10.222.2.105</ip>
+      <mac>00:0c:29:a7:48:fc</mac>
+      <ttl>1782</ttl>
+      <interface>vlan.2222</interface>
+      <port>ethernet1/2</port>
+    </entry>
+    <entry>
+      <status>  c  </status>
+      <ip>10.222.2.108</ip>
+      <mac>a8:b4:56:ec:86:21</mac>
+      <ttl>1501</ttl>
+      <interface>vlan.2222</interface>
+      <port>ethernet1/2</port>
+    </entry>
+    <entry>
+      <status>  c  </status>
+      <ip>10.222.2.110</ip>
+      <mac>d4:c9:3c:51:58:2d</mac>
+      <ttl>1724</ttl>
+      <interface>vlan.2222</interface>
+      <port>ethernet1/2</port>
+    </entry>
+    <entry>
+      <status>  c  </status>
+      <ip>10.222.2.232</ip>
+      <mac>00:0c:29:65:34:1c</mac>
+      <ttl>605</ttl>
+      <interface>vlan.2222</interface>
+      <port>ethernet1/2</port>
+    </entry>
+    <entry>
+      <status>  c  </status>
+      <ip>10.222.2.233</ip>
+      <mac>00:0c:29:65:34:1c</mac>
+      <ttl>1747</ttl>
+      <interface>vlan.2222</interface>
+      <port>ethernet1/2</port>
+    </entry>
+  </entries>
+</result></response>
