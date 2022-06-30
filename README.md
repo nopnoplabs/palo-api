@@ -103,7 +103,7 @@ This query will search the system logs for (subtype eq DHCP). This query will re
 
 To view the Job ID:
 
-`https://<firewallip>//api/?type=log&action=get&job-id=82`
+`https://<firewallip>/api/?type=log&action=get&job-id=82`
 
 ### Step 3: Check ARP Entries and DHCP Logs
 
@@ -131,7 +131,7 @@ This will execute a search on the firewall and return a job number. A second que
 
 **Search Results**
 
-`https://10.10.10.10//api/?type=log&action=get&job-id=158`
+`https://10.10.10.10/api/?type=log&action=get&job-id=158`
 
 **How would you search the logs and learn the following?**
 
@@ -156,7 +156,7 @@ This will execute a search in the threat logs for the same IP address as our tra
 
 **Search Results**
 
-`https://10.10.10.10//api/?type=log&action=get&job-id=158`
+`https://10.10.10.10/api/?type=log&action=get&job-id=158`
 
 ## Bonus
 
