@@ -150,8 +150,8 @@ Grab Job ID:
 `https://<firewallip>/api/?type=log&action=get&job-id=185`
 
 
-##Bonus
+## Bonus
 
 Search XML logs with Xpath queries.
 
-Review xml.py
+Review [xml.py](XML/xml.py)
